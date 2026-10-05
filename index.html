@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PrioSense — Hoor wat je nog niet hoort</title>
+  <meta name="description" content="PrioSense ziet hulpdiensten aankomen, vaak nog vóór de sirene. Zodat jij op tijd en rustig ruim baan maakt.">
+  <meta name="theme-color" content="#050608">
+  <link rel="canonical" href="https://priosense.nl/">
+  <link rel="alternate" hreflang="nl" href="https://priosense.nl/">
+  <link rel="alternate" hreflang="en" href="https://priosense.nl/en/">
+  <link rel="alternate" hreflang="x-default" href="https://priosense.nl/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://priosense.nl/">
+  <meta property="og:title" content="PrioSense — Hoor wat je nog niet hoort">
+  <meta property="og:description" content="PrioSense ziet hulpdiensten aankomen, vaak nog vóór de sirene.">
+  <meta property="og:locale" content="nl_NL">
+  <meta name="twitter:card" content="summary">
+  <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="importmap">{ "imports": { "three": "./js/vendor/three.module.min.js" } }</script>
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/vendor/SplitText.min.js" defer></script>
+  <script src="js/vendor/lenis.min.js" defer></script>
+  <script src="js/sim.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script type="module" src="js/signal.js"></script>
+  <script type="module" src="js/device3d.js"></script>
+</head>
+<body class="is-loading">
+  <div class="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <svg class="loader-mark" viewBox="8 18 48 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round">
+          <path d="M39.86 32.89 A9.6 9.6 0 0 0 24.14 32.89" stroke-width="3.52"/>
+          <path d="M46.16 28.49 A17.28 17.28 0 0 0 17.84 28.49" stroke-width="2.75"/>
+          <path d="M52.45 24.08 A24.96 24.96 0 0 0 11.55 24.08" stroke-width="1.98"/>
+        </g>
+        <circle cx="32" cy="38.4" r="3.2" fill="currentColor"/>
+      </svg>
+      <p class="loader-word">priosense</p>
+    </div>
+    <p class="loader-count"><span class="loader-num">0</span>%</p>
+  </div>
+  <div class="cursor" aria-hidden="true"></div>
+
+  <a class="skip" href="#main">Naar de inhoud</a>
+
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="PrioSense, naar boven">
+      <svg class="brand-mark" viewBox="8 18 48 24" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-linecap="round">
+          <path d="M39.86 32.89 A9.6 9.6 0 0 0 24.14 32.89" stroke-width="3.52"/>
+          <path d="M46.16 28.49 A17.28 17.28 0 0 0 17.84 28.49" stroke-width="2.75" stroke-opacity=".765"/>
+          <path d="M52.45 24.08 A24.96 24.96 0 0 0 11.55 24.08" stroke-width="1.98" stroke-opacity=".53"/>
+        </g>
+        <circle cx="32" cy="38.4" r="3.2" fill="currentColor"/>
+      </svg>
+      <span class="brand-word">priosense</span>
+    </a>
+    <nav aria-label="Hoofdmenu">
+      <ul class="nav-links">
+        <li><a href="#waarom">Waarom</a></li>
+        <li><a href="#kastje">Het kastje</a></li>
+        <li><a href="#waarden">Waarden</a></li>
+      </ul>
+    </nav>
+    <a class="lang" href="en/" hreflang="en" lang="en" aria-label="English version">EN</a>
+    <a class="nav-cta" href="#contact">Wachtlijst</a>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <canvas class="signal" aria-hidden="true"></canvas>
+      <div class="hero-content">
+        <p class="hero-tag"><span class="pulse-dot" aria-hidden="true"></span>Voor in de auto</p>
+        <h1 class="hero-title" id="hero-title">
+          <span class="line">Hoor wat je</span>
+          <span class="line">nog niet <em>hoort.</em></span>
+        </h1>
+        <div class="hero-bottom">
+          <p class="hero-sub">PrioSense ziet hulpdiensten aankomen, vaak nog vóór de sirene. Zodat jij op tijd en rustig ruim baan maakt.</p>
+          <a class="pill" href="#contact"><span>Zet me op de wachtlijst</span><i aria-hidden="true">→</i></a>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span></span></div>
+    </section>
+
+    <section class="marquee" aria-label="Ruim baan. Op tijd. Zonder schrik.">
+      <div class="marquee-track" aria-hidden="true">
+        <div class="marquee-set"><span>Ruim baan</span><b>✦</b><span class="o">Op tijd</span><b>✦</b><span>Zonder schrik</span><b>✦</b><span class="o">Ruim baan</span><b>✦</b><span>Op tijd</span><b>✦</b><span class="o">Zonder schrik</span><b>✦</b></div>
+        <div class="marquee-set"><span>Ruim baan</span><b>✦</b><span class="o">Op tijd</span><b>✦</b><span>Zonder schrik</span><b>✦</b><span class="o">Ruim baan</span><b>✦</b><span>Op tijd</span><b>✦</b><span class="o">Zonder schrik</span><b>✦</b></div>
+      </div>
+    </section>
+
+    <section class="statement" id="waarom" aria-label="Waarom PrioSense">
+      <p class="statement-text">Auto's worden stiller. Muziek harder. Een sirene hoor je steeds later. PrioSense merkt hulpdiensten op <em>voordat</em> jij ze hoort, en geeft je de tijd om rustig ruimte te maken.</p>
+    </section>
+
+    <section class="product" id="kastje" aria-labelledby="product-title">
+      <div class="product-pin">
+        <canvas class="device-canvas" tabindex="0" aria-label="3D-model van het PrioSense-kastje. Sleep of gebruik de pijltjestoetsen om het rond te draaien; tik op de schakelaar op het scherm, of druk op Enter, om de rijmodus te wisselen. Huidige modus:"></canvas>
+        <div class="product-copy">
+          <p class="product-kicker">Het kastje</p>
+          <h2 class="product-title" id="product-title">Klein. <em>Slim.</em><br>Altijd paraat.</h2>
+        </div>
+        <ul class="product-points">
+          <li><span>01</span>Past op elk dashboard</li>
+          <li><span>02</span>Werkt zonder internet</li>
+          <li><span>03</span>Luistert nooit mee</li>
+        </ul>
+        <p class="drag-hint" aria-hidden="true">← Sleep om rond te draaien · tik op Stad of Snelweg →</p>
+      </div>
+    </section>
+
+    <section class="values" id="waarden" aria-label="Waarden">
+      <article class="value">
+        <h3 class="value-word">Stil<span>.</span></h3>
+        <p>Geen geflikker, geen piepjes voor niets. Alleen een seintje als het ertoe doet.</p>
+      </article>
+      <article class="value">
+        <h3 class="value-word">Privé<span>.</span></h3>
+        <p>Geen account, geen cloud, geen afluisteren. Wat er in je auto gebeurt, blijft in je auto.</p>
+      </article>
+      <article class="value">
+        <h3 class="value-word">Direct<span>.</span></h3>
+        <p>Binnen een fractie van een seconde weet je dat er iets aankomt.</p>
+      </article>
+    </section>
+
+    <section class="finale" id="contact" aria-labelledby="finale-title">
+      <div class="lights" aria-hidden="true"><span class="light-blue"></span><span class="light-red"></span></div>
+      <div class="finale-content">
+        <h2 class="finale-title" id="finale-title">Wees er <em>als eerste</em> bij.</h2>
+        <p>PrioSense komt eraan. Stuur een mailtje en je hoort het als eerste.</p>
+        <a class="pill pill-lg" href="mailto:info@priosense.nl?subject=Wachtlijst%20PrioSense"><span>info@priosense.nl</span><i aria-hidden="true">→</i></a>
+      </div>
+      <p class="wordmark" aria-hidden="true">priosense</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span class="year">2026</span> PrioSense · Gemaakt in Nederland</p>
+    <p>Een extra seintje, geen vervanging van goed opletten.</p>
+    <p>Geen cookies, geen tracking.</p>
+  </footer>
+</body>
+</html>

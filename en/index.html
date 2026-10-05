@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PrioSense — Hear what you can't hear yet</title>
+  <meta name="description" content="PrioSense senses emergency services coming your way, often before the siren. So you can make way calmly and in time.">
+  <meta name="theme-color" content="#050608">
+  <link rel="canonical" href="https://priosense.nl/en/">
+  <link rel="alternate" hreflang="nl" href="https://priosense.nl/">
+  <link rel="alternate" hreflang="en" href="https://priosense.nl/en/">
+  <link rel="alternate" hreflang="x-default" href="https://priosense.nl/">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://priosense.nl/en/">
+  <meta property="og:title" content="PrioSense — Hear what you can't hear yet">
+  <meta property="og:description" content="PrioSense senses emergency services coming your way, often before the siren.">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary">
+  <link rel="preload" href="../fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script type="importmap">{ "imports": { "three": "../js/vendor/three.module.min.js" } }</script>
+  <script src="../js/vendor/gsap.min.js" defer></script>
+  <script src="../js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="../js/vendor/SplitText.min.js" defer></script>
+  <script src="../js/vendor/lenis.min.js" defer></script>
+  <script src="../js/sim.js" defer></script>
+  <script src="../js/main.js" defer></script>
+  <script type="module" src="../js/signal.js"></script>
+  <script type="module" src="../js/device3d.js"></script>
+</head>
+<body class="is-loading">
+  <div class="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <svg class="loader-mark" viewBox="8 18 48 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round">
+          <path d="M39.86 32.89 A9.6 9.6 0 0 0 24.14 32.89" stroke-width="3.52"/>
+          <path d="M46.16 28.49 A17.28 17.28 0 0 0 17.84 28.49" stroke-width="2.75"/>
+          <path d="M52.45 24.08 A24.96 24.96 0 0 0 11.55 24.08" stroke-width="1.98"/>
+        </g>
+        <circle cx="32" cy="38.4" r="3.2" fill="currentColor"/>
+      </svg>
+      <p class="loader-word">priosense</p>
+    </div>
+    <p class="loader-count"><span class="loader-num">0</span>%</p>
+  </div>
+  <div class="cursor" aria-hidden="true"></div>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="PrioSense, back to top">
+      <svg class="brand-mark" viewBox="8 18 48 24" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-linecap="round">
+          <path d="M39.86 32.89 A9.6 9.6 0 0 0 24.14 32.89" stroke-width="3.52"/>
+          <path d="M46.16 28.49 A17.28 17.28 0 0 0 17.84 28.49" stroke-width="2.75" stroke-opacity=".765"/>
+          <path d="M52.45 24.08 A24.96 24.96 0 0 0 11.55 24.08" stroke-width="1.98" stroke-opacity=".53"/>
+        </g>
+        <circle cx="32" cy="38.4" r="3.2" fill="currentColor"/>
+      </svg>
+      <span class="brand-word">priosense</span>
+    </a>
+    <nav aria-label="Main menu">
+      <ul class="nav-links">
+        <li><a href="#why">Why</a></li>
+        <li><a href="#device">The device</a></li>
+        <li><a href="#values">Values</a></li>
+      </ul>
+    </nav>
+    <a class="lang" href="../" hreflang="nl" lang="nl" aria-label="Nederlandse versie">NL</a>
+    <a class="nav-cta" href="#contact">Waitlist</a>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <canvas class="signal" aria-hidden="true"></canvas>
+      <div class="hero-content">
+        <p class="hero-tag"><span class="pulse-dot" aria-hidden="true"></span>For your car</p>
+        <h1 class="hero-title" id="hero-title">
+          <span class="line">Hear what you</span>
+          <span class="line">can't hear <em>yet.</em></span>
+        </h1>
+        <div class="hero-bottom">
+          <p class="hero-sub">PrioSense senses emergency services coming your way, often before the siren. So you can make way calmly and in time.</p>
+          <a class="pill" href="#contact"><span>Join the waitlist</span><i aria-hidden="true">→</i></a>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span></span></div>
+    </section>
+
+    <section class="marquee" aria-label="Make way. Ahead of time. Stay calm.">
+      <div class="marquee-track" aria-hidden="true">
+        <div class="marquee-set"><span>Make way</span><b>✦</b><span class="o">Ahead of time</span><b>✦</b><span>Stay calm</span><b>✦</b><span class="o">Make way</span><b>✦</b><span>Ahead of time</span><b>✦</b><span class="o">Stay calm</span><b>✦</b></div>
+        <div class="marquee-set"><span>Make way</span><b>✦</b><span class="o">Ahead of time</span><b>✦</b><span>Stay calm</span><b>✦</b><span class="o">Make way</span><b>✦</b><span>Ahead of time</span><b>✦</b><span class="o">Stay calm</span><b>✦</b></div>
+      </div>
+    </section>
+
+    <section class="statement" id="why" aria-label="Why PrioSense">
+      <p class="statement-text">Cars keep getting quieter. Music louder. Sirens reach you later and later. PrioSense picks up emergency services <em>before</em> you hear them, and gives you time to calmly make room.</p>
+    </section>
+
+    <section class="product" id="device" aria-labelledby="product-title">
+      <div class="product-pin">
+        <canvas class="device-canvas" tabindex="0" aria-label="3D model of the PrioSense device. Drag or use the arrow keys to rotate it; tap the switch on the screen, or press Enter, to change the driving mode. Current mode:"></canvas>
+        <div class="product-copy">
+          <p class="product-kicker">The device</p>
+          <h2 class="product-title" id="product-title">Small. <em>Smart.</em><br>Always ready.</h2>
+        </div>
+        <ul class="product-points">
+          <li><span>01</span>Fits any dashboard</li>
+          <li><span>02</span>Works without internet</li>
+          <li><span>03</span>Never listens in</li>
+        </ul>
+        <p class="drag-hint" aria-hidden="true">← Drag to rotate · tap City or Highway →</p>
+      </div>
+    </section>
+
+    <section class="values" id="values" aria-label="Values">
+      <article class="value">
+        <h3 class="value-word">Quiet<span>.</span></h3>
+        <p>No flicker, no pointless beeps. Just a nudge when it matters.</p>
+      </article>
+      <article class="value">
+        <h3 class="value-word">Private<span>.</span></h3>
+        <p>No account, no cloud, no eavesdropping. What happens in your car stays in your car.</p>
+      </article>
+      <article class="value">
+        <h3 class="value-word">Instant<span>.</span></h3>
+        <p>Within a fraction of a second, you know something is coming.</p>
+      </article>
+    </section>
+
+    <section class="finale" id="contact" aria-labelledby="finale-title">
+      <div class="lights" aria-hidden="true"><span class="light-blue"></span><span class="light-red"></span></div>
+      <div class="finale-content">
+        <h2 class="finale-title" id="finale-title">Be <em>the first</em> to know.</h2>
+        <p>PrioSense is on its way. Send us an email and you'll be the first to hear.</p>
+        <a class="pill pill-lg" href="mailto:info@priosense.nl?subject=PrioSense%20waitlist"><span>info@priosense.nl</span><i aria-hidden="true">→</i></a>
+      </div>
+      <p class="wordmark" aria-hidden="true">priosense</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span class="year">2026</span> PrioSense · Made in the Netherlands</p>
+    <p>An extra heads-up, not a substitute for paying attention.</p>
+    <p>No cookies, no tracking.</p>
+  </footer>
+</body>
+</html>
