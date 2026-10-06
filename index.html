@@ -28,6 +28,7 @@
   <script src="js/vendor/lenis.min.js" defer></script>
   <script src="js/sim.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/film.js" defer></script>
   <script type="module" src="js/signal.js"></script>
   <script type="module" src="js/device3d.js"></script>
 </head>
@@ -100,6 +101,19 @@
 
     <section class="statement" id="waarom" aria-label="Waarom PrioSense">
       <p class="statement-text">Auto's worden stiller. Muziek harder. Een sirene hoor je steeds later. PrioSense merkt hulpdiensten op <em>voordat</em> jij ze hoort, en geeft je de tijd om rustig ruimte te maken.</p>
+    </section>
+
+    <section class="film" id="video" aria-labelledby="film-title">
+      <div class="film-copy">
+        <p class="film-kicker">In 40 seconden</p>
+        <h2 class="film-title" id="film-title">Zie het in <em>actie.</em></h2>
+        <p class="film-sub">Wat PrioSense doet, waarom het nodig is en hoe het eruitziet.</p>
+      </div>
+      <figure class="film-phone">
+        <video class="film-video" src="assets/video/priosense-nl.mp4" poster="assets/video/priosense-nl.jpg" muted loop playsinline preload="none" aria-label="Promovideo van PrioSense met ondertiteling"></video>
+        <button class="film-play" type="button" aria-label="Afspelen"><span aria-hidden="true">▶</span></button>
+        <button class="film-sound" type="button" aria-pressed="false" data-on="Geluid aan" data-off="Geluid uit">Geluid aan</button>
+      </figure>
     </section>
 
     <section class="product" id="kastje" aria-labelledby="product-title">
