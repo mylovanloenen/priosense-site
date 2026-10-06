@@ -27,22 +27,29 @@ omdat de 3D-modules via een webserver geladen moeten worden.
 | `js/vendor/` | three.js 0.186, GSAP 3.15 (+ ScrollTrigger, SplitText), Lenis 1.3 |
 | `fonts/` | Archivo, Instrument Serif Italic, JetBrains Mono (alle drie OFL) |
 
-## Online zetten op priosense.nl
+## Online (priosense.nl)
 
-**GitHub Pages** (gratis):
+De site draait op **Netlify** (project `priosensenl`, https://priosensenl.netlify.app).
+Netlify is gekoppeld aan deze GitHub-repository: elke push naar `main` staat binnen
+een minuut live op https://priosense.nl. Er is geen build-stap; de publish directory is `/`.
 
-1. Zet deze map in een GitHub-repository en zet onder *Settings → Pages* de bron op de `main`-branch.
-2. Het bestand `CNAME` koppelt het domein al aan priosense.nl.
-3. Zet bij je domeinregistrar deze DNS-records:
-   - `A` voor `@` naar `185.199.108.153`, `185.199.109.153`, `185.199.110.153` en `185.199.111.153`
-   - `CNAME` voor `www` naar `<jouw-gebruikersnaam>.github.io`
-4. Vink daarna in GitHub *Enforce HTTPS* aan.
+DNS staat bij TransIP:
 
-**Netlify of Cloudflare Pages** werkt ook: sleep de map erin en koppel het domein in hun dashboard.
+| Naam | Type | Waarde |
+|---|---|---|
+| `@` | A | `75.2.60.5` (Netlify) |
+| `www` | CNAME | `priosensenl.netlify.app.` |
+| `@` | MX | `mx.zoho.eu` (10), `mx2.zoho.eu` (20), `mx3.zoho.eu` (50) |
+| `@` | TXT | `v=spf1 include:zohomail.eu ~all` en de Zoho-verificatie |
+| `zmail._domainkey` | TXT | DKIM-sleutel van Zoho |
+
+Het HTTPS-certificaat (Let's Encrypt) regelt Netlify zelf. E-mail voor
+info@priosense.nl loopt via Zoho Mail (gratis abonnement).
+
+GitHub Pages staat uit; het bestand `CNAME` is een overblijfsel daarvan en doet niets.
 
 ## Nog te doen
 
-- Maak een mailbox `info@priosense.nl` aan, of pas het adres aan in `index.html`.
 - Een afbeelding voor social media (1200 × 630) als `assets/og.png`, en zet dan de `og:image`-regel terug in `index.html`.
 
 ## Licenties
