@@ -45,8 +45,8 @@
   });
 
   /* ── Hero-tekst opdelen voor de intro ────────────────────────────────── */
-  const heroSplit = SplitText.create('.hero-title .line', { type: 'chars', mask: 'chars' });
-  gsap.set(heroSplit.chars, { yPercent: 115 });
+  const heroSplit = SplitText.create('.hero-title .line', { type: 'words,chars', mask: 'chars', charsClass: 'ch', wordsClass: 'w' });
+  gsap.set(heroSplit.chars, { yPercent: 140 });
   gsap.set(['.hero-tag', '.hero-sub', '.hero-content .pill'], { autoAlpha: 0, y: 24 });
 
   /* ── Laadscherm ──────────────────────────────────────────────────────── */

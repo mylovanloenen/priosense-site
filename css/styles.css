@@ -120,11 +120,14 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; text-trans
 .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: lightbar 1.2s steps(1) infinite; }
 @keyframes lightbar { 0% { background: var(--red); box-shadow: 0 0 12px var(--red); } 50% { background: var(--blue); box-shadow: 0 0 12px var(--blue); } }
 .hero-title {
-  font: 800 clamp(3.2rem, 10.6vw, 11.5rem)/0.84 var(--display); font-stretch: 125%;
+  font: 800 clamp(2.4rem, 10.6vw, 11.5rem)/0.84 var(--display); font-stretch: 125%;
   text-transform: uppercase; letter-spacing: -0.045em;
 }
 .hero-title .line { display: block; }
 .hero-title em { font-size: 1.12em; line-height: 0.7; color: var(--blue); }
+/* Masker iets ruimer, zodat staarten (y, g, j) in de schreefletter niet worden afgesneden. */
+.hero-title .w { white-space: nowrap; }
+.hero-title .ch-mask { padding: 0.06em 0.04em 0.28em; margin: -0.06em -0.04em -0.28em; }
 .hero-bottom { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 22px 40px; margin-top: clamp(22px, 4vh, 44px); }
 .hero-sub { max-width: 40ch; font-size: clamp(1rem, 1.4vw, 1.18rem); color: rgba(244, 245, 247, 0.78); }
 .scroll-cue { position: absolute; z-index: 2; left: 50%; top: 84px; width: 1px; height: 56px; background: rgba(255, 255, 255, 0.15); overflow: hidden; display: none; }
