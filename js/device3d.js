@@ -313,3 +313,5 @@ function start() {
 }
 
 if (pin && canvas && PS.ScreenPainter) start();
+
+export { buildDevice, logoTexture };
