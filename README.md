@@ -55,3 +55,26 @@ GitHub Pages staat uit; het bestand `CNAME` is een overblijfsel daarvan en doet 
 ## Licenties
 
 three.js (MIT), GSAP en plugins (gratis "Standard No Charge"-licentie van Webflow), Lenis (MIT) en de lettertypes (SIL OFL) mogen allemaal op een commerciële site gebruikt worden.
+
+## Pre-order live zetten
+
+De pre-ordersectie (€399, 50% aanbetaling van €199,50) staat op de site, maar **bestellen staat uit**: bezoekers zien "Binnenkort te bestellen" en de wachtlijst. Aanzetten gaat in `js/preorder.js`.
+
+**Eerst regelen**
+1. Inschrijven bij de KvK. Vul daarna KvK-nummer, btw-nummer en adres in bij "Wie wij zijn" in `voorwaarden/index.html` en `en/terms/index.html` (nu staat er "volgt").
+2. CE-markering en de wettelijke kant van een C2000-detector laten checken.
+3. Voorwaarden nalezen (eventueel laten checken door het Juridisch Loket of een ondernemersadviseur).
+
+**Stripe Payment Link maken** (dashboard.stripe.com → Payment Links → New)
+- Product: "PrioSense — aanbetaling (50%)", prijs **€199,50**, eenmalig, btw inbegrepen.
+- Betaalmethoden: iDEAL, kaart, Apple Pay (Settings → Payment methods).
+- Verzendadres verzamelen, alleen **Nederland**; telefoonnummer optioneel.
+- "Require customers to accept your terms of service": aan, met `https://priosense.nl/voorwaarden/` als URL (Settings → Public details).
+- Na betaling: "Don't show confirmation page" → doorsturen naar `https://priosense.nl/bedankt/`.
+- Kopieer de link (`https://buy.stripe.com/...`).
+
+**Aanzetten:** in `js/preorder.js` de link bij `STRIPE_LINK` plakken en `LIVE = true` zetten, committen en pushen. De knoppen bovenin veranderen dan vanzelf van "Wachtlijst" naar "Pre-order".
+
+**Tweede helft innen:** als een bestelling klaarstaat voor verzending, stuur je in Stripe een factuur (Invoices → Create) van €199,50 naar de klant. Verstuur pas na betaling.
+
+**Testen:** zet Stripe op *Test mode*, maak daar een test-link en betaal met kaart `4242 4242 4242 4242`. Zet daarna de echte link erin.
